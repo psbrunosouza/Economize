@@ -57,7 +57,11 @@ public class CadastrarActivity extends AppCompatActivity {
                                 Toast.LENGTH_SHORT).show();
                         if(autenticacao.getCurrentUser() != null){
                             startActivity(new Intent(CadastrarActivity.this, MainActivity.class));
+                        }else{
+                            startActivity(new Intent(CadastrarActivity.this, LoginActivity.class));
                         }
+
+                        finish();
                     }else{
                         String excecao = "";
 

@@ -2,6 +2,7 @@ package com.dev.morganizze.Activity;
 
 import com.dev.morganizze.R;
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
+import com.heinrichreimersoftware.materialintro.app.NavigationPolicy;
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
 
 import android.content.Intent;
@@ -58,11 +59,9 @@ public class IntroMainActivity extends IntroActivity {
 
     public void irCadastrar(View view){
         startActivity(new Intent(this, CadastrarActivity.class));
-        finish();
     }
 
     public void irLogar(View view){
         startActivity(new Intent(this, LoginActivity.class));
-        finish();
     }
 }

@@ -1,5 +1,6 @@
 package com.dev.morganizze.Activity;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -57,6 +58,12 @@ public class LoginActivity extends AppCompatActivity {
                                     if(task.isSuccessful()){
                                         Toast.makeText(LoginActivity.this, "Usuário autenticado com sucesso",
                                                 Toast.LENGTH_SHORT).show();
+
+                                        autenticacao.signOut();
+                                        if(autenticacao.getCurrentUser() == null){
+                                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                        }
+                                        finish();
                                     }else{
                                         String excecao;
                                         try{
