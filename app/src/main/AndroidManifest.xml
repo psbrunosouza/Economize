@@ -11,15 +11,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".Activity.ReceitaActivity"></activity>
         <activity
             android:name=".Activity.MainActivity"
-            android:theme="@style/introTema"/>
+            android:theme="@style/introTema" />
         <activity
             android:name=".Activity.LoginActivity"
-            android:theme="@style/introTema"/>
+            android:theme="@style/introTema" />
         <activity
             android:name=".Activity.CadastrarActivity"
-            android:theme="@style/introTema"/>
+            android:theme="@style/introTema" />
         <activity
             android:name=".Activity.IntroMainActivity"
             android:theme="@style/introTema">

@@ -55,6 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_receita"
+            android:onClick="irReceita"
             custom:fab_colorNormal="@color/colorPrimary"
             custom:fab_colorPressed="@color/colorPrimaryDark"
             custom:fab_label="Receita"

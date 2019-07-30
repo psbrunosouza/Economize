@@ -71,27 +71,22 @@ public class ValidacaoHelper {
         return false;
     }
 
-    public String getNome() {
-        return nome;
-    }
+    public boolean validarCampos(String valor, String categoria, String descricao){
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+        if(!valor.isEmpty()){
+            if(!categoria.isEmpty()){
+                if(!descricao.isEmpty()){
+                    return true;
+                }else{
+                    Toast.makeText(context, "Digite a descrição da receita", Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                Toast.makeText(context, "Digite a categoria da receita", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(context, "Digite o valor da receita", Toast.LENGTH_SHORT).show();
+        }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
+        return false;
     }
 }

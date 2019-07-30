@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 import com.dev.morganizze.Helper.AutenticacaoFirebase;
@@ -31,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
+    public void irReceita(View view){
+        startActivity(new Intent(MainActivity.this, ReceitaActivity.class));
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_principal, menu);
@@ -42,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         switch(item.getItemId()){
             case R.id.item_sair:
                 autenticacao.signOut();
-                startActivity(new Intent(MainActivity.this, IntroActivity.class));
                 finish();
                 break;
         }
