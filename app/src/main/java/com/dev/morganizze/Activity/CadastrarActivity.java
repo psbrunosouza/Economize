@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.dev.morganizze.Helper.AutenticacaoFirebase;
+import com.dev.morganizze.Helper.Base64Conversor;
 import com.dev.morganizze.Helper.ValidacaoHelper;
+import com.dev.morganizze.Model.Usuario;
 import com.dev.morganizze.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -17,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.database.DatabaseReference;
 
 import studio.carbonylgroup.textfieldboxes.ExtendedEditText;
 
@@ -25,6 +28,7 @@ public class CadastrarActivity extends AppCompatActivity {
     private ExtendedEditText txt_nome, txt_email, txt_senha;
     private FirebaseAuth autenticacao = AutenticacaoFirebase.autenticacaoReferencia();
     private ValidacaoHelper validacaoHelper;
+    private Usuario usuario = new Usuario();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +48,6 @@ public class CadastrarActivity extends AppCompatActivity {
         String senha = txt_senha.getText().toString();
 
         validacaoHelper = new ValidacaoHelper(nome, email, senha, getApplicationContext());
-
         validacaoHelper.chamarIds(txt_nome, txt_email, txt_senha);
 
         if(validacaoHelper.validarCadastro()){
@@ -53,14 +56,20 @@ public class CadastrarActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
-                        Toast.makeText(CadastrarActivity.this, "Usuário cadastrado com sucesso!",
-                                Toast.LENGTH_SHORT).show();
+                        //GERAR ID DO USUÁRIO
+                        String idUsuario = Base64Conversor.codificarBase64(autenticacao.getCurrentUser().getEmail());
+
+                        //GERAR DADOS DO USUÁRIO AO CADASTRAR
+                        usuario.salvarUsuario(idUsuario, txt_nome.getText().toString(), "00.00", "00.00");
+
                         if(autenticacao.getCurrentUser() != null){
                             startActivity(new Intent(CadastrarActivity.this, MainActivity.class));
                         }else{
                             startActivity(new Intent(CadastrarActivity.this, LoginActivity.class));
                         }
 
+                        Toast.makeText(CadastrarActivity.this, "Usuário cadastrado com sucesso!",
+                                Toast.LENGTH_SHORT).show();
                         finish();
                     }else{
                         String excecao = "";

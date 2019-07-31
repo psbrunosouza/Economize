@@ -9,6 +9,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dev.morganizze.Helper.AutenticacaoFirebase;
 import com.dev.morganizze.Helper.ValidacaoDados;
@@ -47,12 +48,15 @@ public class ReceitaActivity extends AppCompatActivity {
         String strValor = valor_receita.getText().toString();
         String categoria = categoria_receita.getText().toString();
         String descricao = descricao_receita.getText().toString();
-        double valor = Double.parseDouble(strValor);
 
         validacao = new ValidacaoDados(strValor, categoria, descricao, getApplicationContext());
 
         if(validacao.validarCampos()){
-            movimentacao.salvarDados(valor, categoria, descricao);
+            String tipo = "r";
+            double valor = Double.parseDouble(strValor);
+            movimentacao.salvarDados(valor, categoria, descricao, tipo);
+            Toast.makeText(this, "Receita registrada com sucesso", Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 

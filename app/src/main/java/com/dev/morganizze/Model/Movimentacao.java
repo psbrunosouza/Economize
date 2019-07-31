@@ -5,16 +5,17 @@ import com.google.firebase.database.DatabaseReference;
 
 public class Movimentacao{
     private double valor;
-    private String categoria, descricao;
+    private String categoria, descricao, tipo;
     private DatabaseReference referencia = AutenticacaoFirebase.databaseReferencia();
 
     public Movimentacao() {
     }
 
-    public void salvarDados(double valor, String categoria, String descricao){
+    public void salvarDados(double valor, String categoria, String descricao, String tipo){
         this.valor = valor;
         this.categoria = categoria;
         this.descricao = descricao;
+        this.tipo = tipo;
 
         referencia.child("receitas")
             .child("idUsuario")//TODO: CRIAR ID USUÁRIO PARA INSERIR AQUI
@@ -44,5 +45,13 @@ public class Movimentacao{
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }
