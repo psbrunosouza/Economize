@@ -14,7 +14,6 @@ import android.view.View;
 import com.dev.morganizze.Helper.AutenticacaoFirebase;
 import com.dev.morganizze.R;
 import com.google.firebase.auth.FirebaseAuth;
-import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,4 +52,5 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

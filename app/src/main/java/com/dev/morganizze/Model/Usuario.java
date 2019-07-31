@@ -7,15 +7,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
 
 public class Usuario {
-    private String id;
-    private String nome, receitaTotal, despesaTotal;
+    private String id, nome;
+    private double receitaTotal, despesaTotal;
     private DatabaseReference referencia = AutenticacaoFirebase.databaseReferencia();
 
     public Usuario() {
 
     }
 
-    public void salvarUsuario(String id, String nome, String receitaTotal, String despesaTotal){
+    public void salvarUsuario(String id, String nome, double receitaTotal, double despesaTotal){
         this.id = id;
         this.nome = nome;
         this.receitaTotal = receitaTotal;
@@ -43,19 +43,19 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getReceitaTotal() {
+    public double getReceitaTotal() {
         return receitaTotal;
     }
 
-    public void setReceitaTotal(String receitaTotal) {
+    public void setReceitaTotal(double receitaTotal) {
         this.receitaTotal = receitaTotal;
     }
 
-    public String getDespesaTotal() {
+    public double getDespesaTotal() {
         return despesaTotal;
     }
 
-    public void setDespesaTotal(String despesaTotal) {
+    public void setDespesaTotal(double despesaTotal) {
         this.despesaTotal = despesaTotal;
     }
 }

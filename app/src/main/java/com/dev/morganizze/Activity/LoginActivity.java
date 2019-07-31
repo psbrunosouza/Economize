@@ -35,8 +35,6 @@ public class LoginActivity extends AppCompatActivity {
         txt_email = findViewById(R.id.ext_email_lg);
         txt_senha = findViewById(R.id.ext_senha_lg);
         bt_entrar = findViewById(R.id.bt_entrar);
-
-        btEntrar();
     }
 
     //ACESSO DO USUÁRIO
@@ -48,37 +46,31 @@ public class LoginActivity extends AppCompatActivity {
                 String senha = txt_senha.getText().toString();
 
                 validacaoHelper = new ValidacaoHelper(email, senha, getApplicationContext());
-                    validacaoHelper.chamarIds(txt_email, txt_senha);
+                validacaoHelper.chamarIds(txt_email, txt_senha);
 
-                    if(validacaoHelper.validarAcesso()){
-                    autenticacao.signInWithEmailAndPassword(email, senha)
-                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if(task.isSuccessful()){
-                                        Toast.makeText(LoginActivity.this, "Usuário autenticado com sucesso",
-                                                Toast.LENGTH_SHORT).show();
-
-                                        autenticacao.signOut();
-                                        if(autenticacao.getCurrentUser() == null){
-                                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                                        }
-                                        finish();
-                                    }else{
-                                        String excecao;
-                                        try{
-                                            throw task.getException();
-                                        }catch(FirebaseAuthInvalidUserException e){
-                                            txt_email.setError("Não existe usuário cadastrado com esse e-mail");
-                                        }catch(FirebaseAuthInvalidCredentialsException e){
-                                            txt_senha.setError("A senha digitada está incorreta");
-                                        } catch(Exception e){
-                                            excecao = "Falha na autenticação do usuário";
-                                            Toast.makeText(LoginActivity.this, excecao, Toast.LENGTH_SHORT).show();
-                                        }
+                if(validacaoHelper.validarAcesso()){
+                autenticacao.signInWithEmailAndPassword(email, senha)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(task.isSuccessful()){
+                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                    finish();
+                                }else{
+                                    String excecao;
+                                    try{
+                                        throw task.getException();
+                                    }catch(FirebaseAuthInvalidUserException e){
+                                        txt_email.setError("Não existe usuário cadastrado com esse e-mail");
+                                    }catch(FirebaseAuthInvalidCredentialsException e){
+                                        txt_senha.setError("A senha digitada está incorreta");
+                                    } catch(Exception e){
+                                        excecao = "Falha na autenticação do usuário";
+                                        Toast.makeText(LoginActivity.this, excecao, Toast.LENGTH_SHORT).show();
                                     }
                                 }
-                            });
+                            }
+                        });
                 }
             }
         });

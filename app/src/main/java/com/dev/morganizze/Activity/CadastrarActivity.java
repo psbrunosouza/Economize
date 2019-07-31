@@ -56,11 +56,14 @@ public class CadastrarActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
+                        //NOME DO USUÁRIO
+                        String nomeUsuario = txt_nome.getText().toString();
+
                         //GERAR ID DO USUÁRIO
                         String idUsuario = Base64Conversor.codificarBase64(autenticacao.getCurrentUser().getEmail());
 
                         //GERAR DADOS DO USUÁRIO AO CADASTRAR
-                        usuario.salvarUsuario(idUsuario, txt_nome.getText().toString(), "00.00", "00.00");
+                        usuario.salvarUsuario(idUsuario, nomeUsuario, 00.00, 00.00);
 
                         if(autenticacao.getCurrentUser() != null){
                             startActivity(new Intent(CadastrarActivity.this, MainActivity.class));
