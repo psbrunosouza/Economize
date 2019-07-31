@@ -71,22 +71,5 @@ public class ValidacaoHelper {
         return false;
     }
 
-    public boolean validarCampos(String valor, String categoria, String descricao){
 
-        if(!valor.isEmpty()){
-            if(!categoria.isEmpty()){
-                if(!descricao.isEmpty()){
-                    return true;
-                }else{
-                    Toast.makeText(context, "Digite a descrição da receita", Toast.LENGTH_SHORT).show();
-                }
-            }else{
-                Toast.makeText(context, "Digite a categoria da receita", Toast.LENGTH_SHORT).show();
-            }
-        }else{
-            Toast.makeText(context, "Digite o valor da receita", Toast.LENGTH_SHORT).show();
-        }
-
-        return false;
-    }
 }
