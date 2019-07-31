@@ -76,6 +76,7 @@
             android:layout_height="wrap_content"
             android:focusableInTouchMode="true"
             android:inputType="text"
+            android:imeOptions="actionNext"
             android:nextFocusDown="@id/ext_email_lg" />
     </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
@@ -104,6 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:focusableInTouchMode="true"
+            android:imeOptions="actionNext"
             android:inputType="textEmailAddress"
             android:nextFocusForward="@id/ext_senha_lg" />
     </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
@@ -135,6 +137,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:focusableInTouchMode="true"
+            android:imeOptions="actionNext"
             android:inputType="textPassword" />
     </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
@@ -147,6 +150,7 @@
         android:background="@drawable/bt_background"
         android:onClick="btCadastrar"
         android:text="Cadastrar"
+        android:imeOptions="actionNext"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

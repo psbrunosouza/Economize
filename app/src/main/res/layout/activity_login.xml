@@ -74,6 +74,7 @@
             android:id="@+id/ext_email_lg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
             android:focusableInTouchMode="true"
             android:inputType="textEmailAddress"
             android:nextFocusForward="@id/ext_senha_lg" />
@@ -104,6 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:focusableInTouchMode="true"
+            android:imeOptions="actionNext"
             android:inputType="textPassword" />
     </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
@@ -113,6 +115,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bt_background"
         android:text="Entrar"
+        android:imeOptions="actionNext"
         android:layout_marginStart="54dp"
         android:layout_marginEnd="54dp"
         android:textColor="@color/colorPrimaryDark"
