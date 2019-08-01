@@ -1,5 +1,4 @@
 <resources>
-
     <!-- Tema padrão do aplicativo -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -11,5 +10,17 @@
     <style name="introTema" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="receitaTema" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/corPrincipalReceita</item>
+        <item name="colorPrimaryDark">@color/corSecundariaReceita</item>
+        <item name="colorAccent">@color/corSuporteReceita</item>
+    </style>
+
+    <style name="despesaTema" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/corPrincipalDespesa</item>
+        <item name="colorPrimaryDark">@color/corSecundariaDespesa</item>
+        <item name="colorAccent">@color/corSuporteDespesa</item>
     </style>
 </resources>

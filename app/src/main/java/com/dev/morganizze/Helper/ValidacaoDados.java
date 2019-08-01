@@ -6,29 +6,34 @@ import android.widget.Toast;
 public class ValidacaoDados {
 
     private Context context;
-    private String valor, categoria, descricao;
+    private String valor, categoria, descricao, data;
 
-    public ValidacaoDados(String valor, String categoria, String descricao, Context context) {
+    public ValidacaoDados(String valor, String categoria, String descricao, String data, Context context) {
         this.context = context;
         this.valor = valor;
         this.categoria = categoria;
         this.descricao = descricao;
+        this.data = data;
     }
 
     public boolean validarCampos(){
 
         if(!valor.isEmpty()){
-            if(!categoria.isEmpty()){
-                if(!descricao.isEmpty()){
-                    return true;
+            if(!data.isEmpty()){
+                if(!categoria.isEmpty()){
+                    if(!descricao.isEmpty()){
+                        return true;
+                    }else{
+                        Toast.makeText(this.context, "Preencha com a categoria da atividade", Toast.LENGTH_SHORT).show();
+                    }
                 }else{
-                    Toast.makeText(this.context, "Digite a descrição da receita", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this.context, "Preencha com a categoria da atividade", Toast.LENGTH_SHORT).show();
                 }
             }else{
-                Toast.makeText(this.context, "Digite a categoria da receita", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this.context, "Preencha com a data da atividade", Toast.LENGTH_SHORT).show();
             }
         }else{
-            Toast.makeText(this.context, "Digite o valor da receita", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this.context, "Preencha com o valor da atividade", Toast.LENGTH_SHORT).show();
         }
 
         return false;

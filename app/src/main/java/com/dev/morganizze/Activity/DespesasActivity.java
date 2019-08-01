@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
+
 import com.dev.morganizze.Helper.AutenticacaoFirebase;
 import com.dev.morganizze.Helper.Base64Conversor;
 import com.dev.morganizze.Helper.DataFormatar;
@@ -21,15 +22,15 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+
 import studio.carbonylgroup.textfieldboxes.ExtendedEditText;
 
-public class ReceitaActivity extends AppCompatActivity {
-
-    private ExtendedEditText valor_receita, categoria_receita, descricao_receita, data_receita;
-    private TextView totalValor_receita;
-    private FloatingActionButton fab_receita;
+public class DespesasActivity extends AppCompatActivity {
+    private ExtendedEditText valor_despesa, categoria_despesa, descricao_despesa, data_despesa;
+    private TextView totalValor_despesa;
+    private FloatingActionButton fab_despesa;
     private ValidacaoDados validacao;
-    private double receitaAtualizada, receitaTotal;
+    private double despesaAtualizada, despesaTotal;
     private Movimentacao movimentacao = new Movimentacao();
     private DatabaseReference referencia = AutenticacaoFirebase.databaseReferencia();
     private FirebaseAuth autenticacao = AutenticacaoFirebase.autenticacaoReferencia();
@@ -38,36 +39,35 @@ public class ReceitaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_receita);
+        setContentView(R.layout.activity_despesas);
         getSupportActionBar().setElevation(0);
         getSupportActionBar().setTitle(Html.fromHtml("<font color=\"#ffffff\">" + "Adicioanar Despesas" + "</font>"));
 
-        valor_receita = findViewById(R.id.valor_receita);
-        categoria_receita = findViewById(R.id.categoria_receita);
-        descricao_receita = findViewById(R.id.descricao_receita);
-        totalValor_receita = findViewById(R.id.totalValor_receita);
-        data_receita = findViewById(R.id.data_receita);
-        fab_receita = findViewById(R.id.fab_receita);
+        valor_despesa = findViewById(R.id.valor_despesa);
+        categoria_despesa = findViewById(R.id.categoria_despesa);
+        descricao_despesa = findViewById(R.id.descricao_despesa);
+        totalValor_despesa = findViewById(R.id.totalValor_despesa);
+        data_despesa = findViewById(R.id.data_despesa);
+        fab_despesa = findViewById(R.id.fab_despesa);
     }
 
-    public void adicionarReceita(View view){
-
+    public void adicionarDespesa(View view){
         String idUsuario = Base64Conversor.codificarBase64(autenticacao.getCurrentUser().getEmail());
         DatabaseReference usuario = referencia.child("usuarios").child(idUsuario);
 
-        String strValor = valor_receita.getText().toString();
-        String categoria = categoria_receita.getText().toString();
-        String descricao = descricao_receita.getText().toString();
-        String data = data_receita.getText().toString();
+        String strValor = valor_despesa.getText().toString();
+        String categoria = categoria_despesa.getText().toString();
+        String descricao = descricao_despesa.getText().toString();
+        String data = data_despesa.getText().toString();
 
         validacao = new ValidacaoDados(strValor, categoria, descricao, data, getApplicationContext());
 
         if(validacao.validarCampos()){
-            String tipo = "r";
+            String tipo = "d";
             double valor = Double.parseDouble(strValor);
-            receitaAtualizada = receitaTotal + valor;
+            despesaAtualizada = despesaTotal + valor;
 
-            usuario.child("receitaTotal").setValue(receitaAtualizada);
+            usuario.child("despesaTotal").setValue(despesaAtualizada);
             movimentacao.salvarDados(idUsuario, valor, categoria, descricao, tipo, data);
             finish();
         }
@@ -81,7 +81,7 @@ public class ReceitaActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Usuario usuarioDados = dataSnapshot.getValue(Usuario.class);
-                receitaTotal = usuarioDados.getReceitaTotal();
+                despesaTotal = usuarioDados.getDespesaTotal();
             }
 
             @Override
@@ -96,6 +96,6 @@ public class ReceitaActivity extends AppCompatActivity {
         super.onStart();
         recuperarDados();
 
-        data_receita.setText(DataFormatar.dataAtual());
+        data_despesa.setText(DataFormatar.dataAtual());
     }
 }

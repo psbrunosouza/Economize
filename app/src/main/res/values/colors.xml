@@ -7,7 +7,15 @@
     <color name="colorPrimary">#3BB54A</color>
     <color name="colorPrimaryDark">#0E9347</color>
     <color name="colorAccent">#cd5360</color>
-    <color name="colorBackground">#FAFBF3</color>
 
+    <color name="colorBackground">#FAFBF3</color>
     <color name="colorBotoes">#33ACACAC</color>
+
+    <color name="corPrincipalReceita">#3BB54A</color>
+    <color name="corSecundariaReceita">#0E9347</color>
+    <color name="corSuporteReceita">#FFC107</color>
+
+    <color name="corPrincipalDespesa">#cd5360</color>
+    <color name="corSecundariaDespesa">#B14752</color>
+    <color name="corSuporteDespesa">#FF9800</color>
 </resources>

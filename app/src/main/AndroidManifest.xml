@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Activity.ReceitaActivity"></activity>
+        <activity android:name=".Activity.DespesasActivity" android:theme="@style/despesaTema"></activity>
+        <activity android:name=".Activity.ReceitaActivity" android:theme="@style/receitaTema"/>
         <activity
             android:name=".Activity.MainActivity"
             android:theme="@style/introTema" />

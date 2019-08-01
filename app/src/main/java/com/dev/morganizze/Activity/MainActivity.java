@@ -35,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(MainActivity.this, ReceitaActivity.class));
     }
 
+    public void irDespesa(View view){
+        startActivity(new Intent(MainActivity.this, DespesasActivity.class));
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_principal, menu);

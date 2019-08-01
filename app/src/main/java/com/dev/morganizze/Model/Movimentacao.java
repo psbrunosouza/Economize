@@ -1,27 +1,29 @@
 package com.dev.morganizze.Model;
 
 import com.dev.morganizze.Helper.AutenticacaoFirebase;
+import com.dev.morganizze.Helper.DataFormatar;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
 
 public class Movimentacao{
     private double valor;
-    private String id, categoria, descricao, tipo;
+    private String id, categoria, descricao, data ,tipo;
     private DatabaseReference referencia = AutenticacaoFirebase.databaseReferencia();
 
     public Movimentacao() {
     }
 
-    public void salvarDados(String id, double valor, String categoria, String descricao, String tipo){
+    public void salvarDados(String id, double valor, String categoria, String descricao, String tipo, String data){
         this.id = id;
         this.valor = valor;
         this.categoria = categoria;
         this.descricao = descricao;
         this.tipo = tipo;
+        this.data = data;
 
         referencia.child("movimentacoes")
-            .child(id)//TODO: CRIAR ID USUÁRIO PARA INSERIR AQUI
-            .child("052019")//TODO: CRIAR FORMATO DE DATA PADRÃO PARA INSERIR AQUI
+            .child(id)
+            .child(DataFormatar.dataPostagem(data))
             .setValue(this);
     }
 
@@ -64,5 +66,14 @@ public class Movimentacao{
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    @Exclude
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 }

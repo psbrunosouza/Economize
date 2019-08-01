@@ -9,6 +9,7 @@
     tools:showIn="@layout/activity_main">
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:background="@color/colorPrimary"
@@ -46,5 +47,18 @@
             android:textSize="24sp"
             android:textStyle="italic" />
     </LinearLayout>
+
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        android:id="@+id/calendario"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.0"
+        app:mcv_calendarMode="month"
+        app:mcv_tileSize="50dp">
+
+    </com.prolificinteractive.materialcalendarview.MaterialCalendarView>
 
 </android.support.constraint.ConstraintLayout>
