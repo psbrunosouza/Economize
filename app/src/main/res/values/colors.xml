@@ -13,7 +13,7 @@
 
     <color name="corPrincipalReceita">#3BB54A</color>
     <color name="corSecundariaReceita">#0E9347</color>
-    <color name="corSuporteReceita">#FFC107</color>
+    <color name="corSuporteReceita">#FF9800</color>
 
     <color name="corPrincipalDespesa">#cd5360</color>
     <color name="corSecundariaDespesa">#B14752</color>
