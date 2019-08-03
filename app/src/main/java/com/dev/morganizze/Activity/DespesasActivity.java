@@ -95,7 +95,6 @@ public class DespesasActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         recuperarDados();
-
         data_despesa.setText(DataFormatar.dataAtual());
     }
 }

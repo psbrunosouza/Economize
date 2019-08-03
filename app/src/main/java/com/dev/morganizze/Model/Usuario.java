@@ -1,8 +1,6 @@
 package com.dev.morganizze.Model;
 
 import com.dev.morganizze.Helper.AutenticacaoFirebase;
-import com.dev.morganizze.Helper.Base64Conversor;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
 
@@ -22,7 +20,7 @@ public class Usuario {
         this.despesaTotal = despesaTotal;
 
         referencia.child("usuarios")
-                .child(id)
+                .child(this.id)
                 .setValue(this);
     }
 

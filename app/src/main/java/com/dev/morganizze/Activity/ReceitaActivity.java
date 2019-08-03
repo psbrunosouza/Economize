@@ -95,7 +95,6 @@ public class ReceitaActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         recuperarDados();
-
         data_receita.setText(DataFormatar.dataAtual());
     }
 }
