@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
+
 import com.dev.morganizze.Helper.AutenticacaoFirebase;
 import com.dev.morganizze.Helper.Base64Conversor;
 import com.dev.morganizze.Helper.DataFormatar;
@@ -21,6 +22,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+
 import studio.carbonylgroup.textfieldboxes.ExtendedEditText;
 
 public class ReceitaActivity extends AppCompatActivity {
@@ -66,9 +68,16 @@ public class ReceitaActivity extends AppCompatActivity {
             String tipo = "r";
             double valor = Double.parseDouble(strValor);
             receitaAtualizada = receitaTotal + valor;
-
             usuario.child("receitaTotal").setValue(receitaAtualizada);
-            movimentacao.salvarDados(idUsuario, valor, categoria, descricao, tipo, data);
+
+            movimentacao.setId(idUsuario);
+            movimentacao.setValor(valor);
+            movimentacao.setCategoria(categoria);
+            movimentacao.setDescricao(descricao);
+            movimentacao.setData(data);
+            movimentacao.setTipo(tipo);
+
+            movimentacao.salvarDados();
             finish();
         }
     }

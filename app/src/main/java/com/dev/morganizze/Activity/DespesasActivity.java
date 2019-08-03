@@ -66,9 +66,16 @@ public class DespesasActivity extends AppCompatActivity {
             String tipo = "d";
             double valor = Double.parseDouble(strValor);
             despesaAtualizada = despesaTotal + valor;
-
             usuario.child("despesaTotal").setValue(despesaAtualizada);
-            movimentacao.salvarDados(idUsuario, valor, categoria, descricao, tipo, data);
+
+            movimentacao.setId(idUsuario);
+            movimentacao.setValor(valor);
+            movimentacao.setCategoria(categoria);
+            movimentacao.setDescricao(descricao);
+            movimentacao.setData(data);
+            movimentacao.setTipo(tipo);
+
+            movimentacao.salvarDados();
             finish();
         }
     }

@@ -13,25 +13,20 @@ public class Movimentacao{
     public Movimentacao() {
     }
 
-    public void salvarDados(String id, double valor, String categoria, String descricao, String tipo, String data){
-        this.id = id;
-        this.valor = valor;
-        this.categoria = categoria;
-        this.descricao = descricao;
-        this.tipo = tipo;
-        this.data = data;
-
-        referencia.child("movimentacoes")
-            .child(id)
-            .child(DataFormatar.dataPostagem(data))
-            .setValue(this);
+    public void salvarDados(){
+        DatabaseReference movimentacao = referencia
+                .child("movimentacoes")
+                .child(id)
+                .child(DataFormatar.dataPostagem(data))
+                .push();
+        movimentacao.setValue(this);
     }
 
     @Exclude
     public String getId() {
         return id;
     }
-
+    @Exclude
     public void setId(String id) {
         this.id = id;
     }
@@ -72,7 +67,7 @@ public class Movimentacao{
     public String getData() {
         return data;
     }
-
+    @Exclude
     public void setData(String data) {
         this.data = data;
     }

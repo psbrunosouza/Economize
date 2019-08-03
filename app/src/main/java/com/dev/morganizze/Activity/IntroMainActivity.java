@@ -2,17 +2,11 @@ package com.dev.morganizze.Activity;
 
 import com.dev.morganizze.R;
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
-import com.heinrichreimersoftware.materialintro.app.NavigationPolicy;
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
 
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 public class IntroMainActivity extends IntroActivity {
     @Override
@@ -59,9 +53,11 @@ public class IntroMainActivity extends IntroActivity {
 
     public void irCadastrar(View view){
         startActivity(new Intent(this, CadastrarActivity.class));
+        finish();
     }
 
     public void irLogar(View view){
         startActivity(new Intent(this, LoginActivity.class));
+        finish();
     }
 }
